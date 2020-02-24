@@ -1,0 +1,9 @@
+#!/bin/sh
+BASEDIR="$(realpath "$(dirname "$0")")"
+source $BASEDIR/ipython-env/bin/activate
+. environ.sh
+JULIA_KERNEL=$(jupyter kernelspec list | awk '{print $1}' | egrep julia)
+jupyter nbconvert \
+  --ExecutePreprocessor.kernel_name=$JULIA_KERNEL \
+  --to rst \
+  --execute "$@"
