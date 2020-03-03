@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 BASEDIR="$(realpath "$(dirname "$0")")"
 python3 -m venv "$BASEDIR/ipython-env"
 source "$BASEDIR/ipython-env/bin/activate"
