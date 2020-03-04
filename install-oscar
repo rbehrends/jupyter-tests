@@ -5,3 +5,6 @@ python3 -m venv "$BASEDIR/ipython-env"
 pip install jupyter
 . "$BASEDIR/environ.sh"
 julia "$BASEDIR/install-oscar.jl"
+# The IJulia kernel starts up with --project=@., which is not what we
+# need, so we delete the option from the kernel invocation.
+sed -i -e '/--project=/d' "$JUPYTER_DATA_DIR"/kernels/julia-*/kernel.json
