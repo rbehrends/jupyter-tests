@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+BASEDIR="$(realpath "$(dirname "$0")")"
+$BASEDIR/jupyter-$(jq -r .metadata.kernelspec.language "$1") "$@"
